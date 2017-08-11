@@ -1,0 +1,13 @@
+ShangCube\Sphere\TableData:
+  type: entity
+  table: tables
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    tableId:
+      type: integer
+    data:
+      type: string

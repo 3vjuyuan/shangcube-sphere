@@ -1,0 +1,15 @@
+ShangCube\Sphere\Brand:
+  type: entity
+  table: brands
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    name:
+      type: string
+    description:
+      type: string
+    logo:
+      type: integer

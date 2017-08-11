@@ -1,0 +1,25 @@
+ShangCube\Sphere\Product:
+  type: entity
+  table: products
+  id:
+    uid:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    name:
+      type: string
+    description:
+      type: string
+    price:
+      type: integer
+    sku:
+      type: string
+    amount:
+      type: integer
+    brand:
+      type: integer
+    image:
+      type: string
+    categories:
+      type: string

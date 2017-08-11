@@ -1,0 +1,23 @@
+ShangCube\Sphere\User:
+  type: entity
+  table: user
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    username:
+      type: string
+    password:
+      type: string
+    firstname:
+      type: string
+    lastname:
+      type: string
+    birthday:
+      type: integer
+    sex:
+      type: integer
+    identify:
+      type: string

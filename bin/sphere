@@ -1,0 +1,14 @@
+#!/usr/bin/env php
+<?php
+
+foreach ([__DIR__ . '/../../', __DIR__ . '/../vendor/', __DIR__ . '/vendor/'] as $directory) {
+    if (file_exists($file = $directory. 'autoload.php')) {
+        /** @noinspection PhpIncludeInspection */
+        require $file;
+        break;
+    }
+}
+
+(new \Symfony\Component\Dotenv\Dotenv())->load($directory.'/../.env');
+
+\ShangCube\Sphere\Console\ConsoleTools::run();
