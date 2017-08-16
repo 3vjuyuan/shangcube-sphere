@@ -1,9 +1,15 @@
 <?php
 /**
- * Created by IntelliJ IDEA.
- * User: Weiye Sun
- * Date: 2017/8/6
- * Time: 21:27
+ * Copyright (c) 2014-present, San Wei Ju Yuan Tech Ltd. <https://www.3vjuyuan.com>
+ * All rights reserved.
+ *
+ * This file is part of swim-reformer, licensed under the MIT license (MIT) found
+ * in the LICENSE file in the root directory of this source tree.
+ *
+ * For more details:
+ * https://www.3vjuyuan.com/licenses/mit.html
+ *
+ * @author Team Delta <delta@3vjuyuan.com>
  */
 
 namespace ShangCube\Sphere\Utility;
@@ -11,6 +17,7 @@ namespace ShangCube\Sphere\Utility;
 use ShangCube\Sphere\Core\Configuration;
 use ShangCube\Sphere\Core\ConfigurationInterface;
 use Doctrine\ORM\Tools\Setup;
+use Doctrine\ORM\Mapping\UnderscoreNamingStrategy;
 
 class GeneralUtility
 {
@@ -38,6 +45,7 @@ class GeneralUtility
                     $metadataType = getenv('METADATA_TYPE');
                     $metadataPath = getenv('METADATA_PATH');
                     $this->metadataConfig = Setup::createYAMLMetadataConfiguration(array($metadataPath), true);
+                    $this->metadataConfig->setNamingStrategy(new UnderscoreNamingStrategy(CASE_LOWER));
                 }
             };
         }
