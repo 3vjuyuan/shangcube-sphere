@@ -1,14 +1,19 @@
 #!/usr/bin/env php
 <?php
 
-foreach ([__DIR__ . '/../../', __DIR__ . '/../vendor/', __DIR__ . '/vendor/'] as $directory) {
-    if (file_exists($file = $directory. 'autoload.php')) {
-        /** @noinspection PhpIncludeInspection */
+foreach ([__DIR__ . '/../../../', __DIR__ . '/../../', __DIR__ . '/../', __DIR__ . '/'] as $vendorDirectory) {
+    if (file_exists($file = $vendorDirectory. 'autoload.php')) {
         require $file;
         break;
     }
 }
 
-(new \Symfony\Component\Dotenv\Dotenv())->load($directory.'/../.env');
+$dotEnv = new \Symfony\Component\Dotenv\Dotenv();
+
+foreach ([$vendorDirectory . '../', $vendorDirectory . '../../'] as $envDirectory) {
+    if (file_exists($file = $envDirectory. '.env')) {
+        $dotEnv->load($file);
+    }
+}
 
 \ShangCube\Sphere\Console\ConsoleTools::run();
