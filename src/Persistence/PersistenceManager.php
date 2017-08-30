@@ -1,13 +1,22 @@
 <?php
 /**
  * Copyright (c) 2014-present, San Wei Ju Yuan Tech Ltd. <https://www.3vjuyuan.com>
- * All rights reserved.
+ * This file is part of sphere-framework
  *
- * This file is part of swim-reformer, licensed under the MIT license (MIT) found
- * in the LICENSE file in the root directory of this source tree.
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
  *
  * For more details:
- * https://www.3vjuyuan.com/licenses/mit.html
+ * https://www.3vjuyuan.com/licenses.html
  *
  * @author Team Delta <delta@3vjuyuan.com>
  */
@@ -60,7 +69,8 @@ class PersistenceManager
     /**
      * @return EntityManager
      */
-    public function getEntityManager() {
+    public function getEntityManager()
+    {
         return $this->entityManager;
     }
 
@@ -71,7 +81,8 @@ class PersistenceManager
      * @param int|null $lockVersion
      * @return null|object
      */
-    public function find(string $entityClassName, $id, $lockMode = null, $lockVersion = null) {
+    public function find(string $entityClassName, $id, $lockMode = null, $lockVersion = null)
+    {
         return $this->entityManager->find($entityClassName, $id, $lockMode, $lockVersion);
     }
 
@@ -79,7 +90,8 @@ class PersistenceManager
      * @param array|null $orderBy
      * @return array
      */
-    public function findAll(array $orderBy = null) {
+    public function findAll(array $orderBy = null)
+    {
         return $this->persistence->loadAll([], $orderBy);
     }
 
@@ -90,7 +102,8 @@ class PersistenceManager
      * @param null $offset
      * @return array
      */
-    public function findBy(array $criteria, carray $orderBy = null, $limit = null, $offset = null) {
+    public function findBy(array $criteria, carray $orderBy = null, $limit = null, $offset = null)
+    {
         return $this->persistence->loadAll($criteria, $orderBy, $limit, $offset);
     }
 
@@ -99,19 +112,23 @@ class PersistenceManager
      * @param array|null $orderBy
      * @return null|object
      */
-    public function findOneBy(array $criteria, array $orderBy = null) {
+    public function findOneBy(array $criteria, array $orderBy = null)
+    {
         return $this->persistence->load($criteria, null, null, [], null, 1, $orderBy);
     }
 
-    public function persist(DomainObject $entity) {
+    public function persist(DomainObject $entity)
+    {
         $this->entityManager->persist($entity);
     }
 
-    public function remove(DomainObject $entity) {
+    public function remove(DomainObject $entity)
+    {
         $this->entityManager->remove($entity);
     }
 
-    public function flush() {
+    public function flush()
+    {
         $this->entityManager->flush();
     }
 }

@@ -1,13 +1,22 @@
 <?php
 /**
  * Copyright (c) 2014-present, San Wei Ju Yuan Tech Ltd. <https://www.3vjuyuan.com>
- * All rights reserved.
+ * This file is part of sphere-framework
  *
- * This file is part of swim-reformer, licensed under the MIT license (MIT) found
- * in the LICENSE file in the root directory of this source tree.
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
  *
  * For more details:
- * https://www.3vjuyuan.com/licenses/mit.html
+ * https://www.3vjuyuan.com/licenses.html
  *
  * @author Team Delta <delta@3vjuyuan.com>
  */
@@ -29,15 +38,17 @@ class GeneralUtility
     /**
      * @return ConfigurationInterface
      */
-    public static function getConfiguration() {
-        if(!isset(self::$configuration)) {
-            self::$configuration = new class extends Configuration {
+    public static function getConfiguration()
+    {
+        if (!isset(self::$configuration)) {
+            self::$configuration = new class extends Configuration
+            {
                 protected function initialize()
                 {
                     $databaseParameter = [];
 
                     // @todo Database configuration should be got from database driver utility with different support
-                    if($url = getenv('DATABASE_URL')) {
+                    if ($url = getenv('DATABASE_URL')) {
                         $databaseParameter['url'] = $url;
                     }
                     $this->databaseParameter = $databaseParameter;
@@ -53,7 +64,8 @@ class GeneralUtility
         return self::$configuration;
     }
 
-    public static function makeObjectInstance($className) {
+    public static function makeObjectInstance($className)
+    {
 
     }
 }
